@@ -14,11 +14,9 @@ plugin_cname:
   when: false
   default: "{{plugin_name | lower}}"
   help: A form of the plugin name suitable for filenames
-repo_name: "{{project_name | lower | replace(' ', '')}}"
-plugin_uri: "https://{{domain}}/plugins/{{repo_name}}"
+plugin_uri: "https://{{domain}}/plugins/{{plugin_cname}}"
 project_license: "MIT"
 version: "0.1.0"
-year: "2024"
 num_inputs:
   type: int
   default: 1
@@ -30,7 +28,9 @@ _tasks:
   - "echo 'Running post-project-generation hook...'"
   - "echo 'Initializing new Git repository:'"
   - "git init"
-  - "git remote add origin git@github.com:{{github_username}}/{{repo_name}}"
+  - "git remote add origin git@github.com:{{github_username}}/$(basename $(pwd)).git"
+  - "git config get user.name >/dev/null || git config set --no-global user.name '{{github_username}}'"
+  - "git config get user.email >/dev/null || git config set --no-global user.email '{{email}}'"
   - "echo 'Adding Git submodule for DPF library:'"
   - "git submodule add https://github.com/DISTRHO/DPF.git dpf"
   - "echo 'Checking out submodules:'"
@@ -39,7 +39,11 @@ _tasks:
   - "git add -A"
   - "git commit -m 'Initial commit'"
 _message_after_copy: |
+
   Your DPF/FAUST audio effect plugin project is now ready!
   To compile it, change into the '{{repo_name}}' directory and type 'make'.
   The plugin binaries and bundles will be placed in the 'bin' subdirectory.
   Have fun!
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/context.py:ContextUpdater

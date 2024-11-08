@@ -18,10 +18,13 @@ where `<my-project>` should be the path to a non-existing directory where
 your new project will be created.
 
 **Note:** The `--trust` option is necessary because the project template
-runs some additional tasks after the project generation and is this considered
-"unsafe". These tasks are simple shell commands to set up a git repository with
-a sub module etc. You can have a look at the [copier.yml](./copier.yml) file to
-review these commands beforehand.
+runs some additional tasks after the project generation and also loads some
+custom Jinja template extensions included in the project template. Both things
+are considered "unsafe", because they can potentially run arbitray commands as
+the user who generates a project from the template. The additional tasks are
+simple shell commands to set up a git repository with a sub module etc. You can
+have a look at the [copier.yml](./copier.yml) file to review these commands
+beforehand.
 
 Enter the plugin name and other info at the prompts. (See the
 [copier documentation] on how to change the default values for these prompts.)
