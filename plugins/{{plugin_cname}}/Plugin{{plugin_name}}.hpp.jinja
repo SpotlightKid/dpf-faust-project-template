@@ -1,10 +1,10 @@
 /*
- * {{ cookiecutter.project_name }} audio effect based on DISTRHO Plugin Framework (DPF)
+ * {{project_name}} audio effect based on DISTRHO Plugin Framework (DPF)
  *
- * SPDX-License-Identifier: {{ cookiecutter.project_license }}
+ * SPDX-License-Identifier: {{project_license}}
  *
- * Copyright (C) {{ cookiecutter.year }} {{ cookiecutter.author_name }} <{{ cookiecutter.email }}>
-{%- if cookiecutter.project_license == 'MIT' %}
+ * Copyright (C) {{year}} {{author_name}} <{{email}}>
+{%- if project_license == 'MIT' %}
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -26,11 +26,11 @@
 {%- endif %}
  */
 
-#ifndef PLUGIN_{{ cookiecutter.plugin_name | upper }}_H
-#define PLUGIN_{{ cookiecutter.plugin_name | upper }}_H
+#ifndef PLUGIN_{{plugin_name | upper}}_H
+#define PLUGIN_{{plugin_name | upper}}_H
 
 #include "DistrhoPlugin.hpp"
-#include "{{ cookiecutter.plugin_name }}.hpp"
+#include "{{plugin_name}}.hpp"
 
 START_NAMESPACE_DISTRHO
 
@@ -48,26 +48,26 @@ START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
 
-class Plugin{{ cookiecutter.plugin_name }} : public Plugin {
+class Plugin{{plugin_name}} : public Plugin {
 public:
-    Plugin{{ cookiecutter.plugin_name }}();
+    Plugin{{plugin_name}}();
 
-    ~Plugin{{ cookiecutter.plugin_name }}();
+    ~Plugin{{plugin_name}}();
 
 protected:
     // -------------------------------------------------------------------
     // Information
 
     const char* getLabel() const noexcept override {
-        return "{{ cookiecutter.plugin_name }}";
+        return "{{plugin_name}}";
     }
 
     const char* getDescription() const override {
-        return "{{ cookiecutter.plugin_description }}";
+        return "{{plugin_description}}";
     }
 
     const char* getMaker() const noexcept override {
-        return "{{ cookiecutter.plugin_brand }}";
+        return "{{plugin_brand}}";
     }
 
     const char* getHomePage() const override {
@@ -75,11 +75,11 @@ protected:
     }
 
     const char* getLicense() const noexcept override {
-        return "https://spdx.org/licenses/{{ cookiecutter.project_license }}";
+        return "https://spdx.org/licenses/{{project_license}}";
     }
 
     uint32_t getVersion() const noexcept override {
-        return d_version({{ cookiecutter.version | replace('.', ', ') }});
+        return d_version({{version | replace('.', ', ')}});
     }
 
     // Go to:
@@ -120,14 +120,14 @@ protected:
 
 private:
     double          fSampleRate;
-    {{ cookiecutter.plugin_name }}*     dsp;
+    {{plugin_name}}*     dsp;
 
-    DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Plugin{{ cookiecutter.plugin_name }})
+    DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Plugin{{plugin_name}})
 };
 
 struct Preset {
     const char* name;
-    float params[{{ cookiecutter.plugin_name }}::NumParameters];
+    float params[{{plugin_name}}::NumParameters];
 };
 
 const Preset factoryPresets[] = {
@@ -137,7 +137,7 @@ const Preset factoryPresets[] = {
     }
     //,{
     //    "Another preset",  // preset name
-    //    {-14.0f, ...}      // array of {{ cookiecutter.plugin_name }}::NumParameters float param values
+    //    {-14.0f, ...}      // array of {{plugin_name}}::NumParameters float param values
     //}
 };
 
@@ -147,4 +147,4 @@ const uint presetCount = sizeof(factoryPresets) / sizeof(Preset);
 
 END_NAMESPACE_DISTRHO
 
-#endif  // #ifndef PLUGIN_{{ cookiecutter.plugin_name | upper }}_H
+#endif  // #ifndef PLUGIN_{{plugin_name | upper}}_H

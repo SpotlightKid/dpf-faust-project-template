@@ -80,7 +80,7 @@ all: libs plugins gen
 
 # --------------------------------------------------------------
 
-PLUGINS = {{ cookiecutter.plugin_name | lower }}
+PLUGINS = {{plugin_cname}}
 
 DPF_PATCHES = \
 	dpf/fix-lv2-version-export.patch \

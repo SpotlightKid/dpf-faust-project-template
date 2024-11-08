@@ -1,0 +1,47 @@
+project_name: "DPF FAUST Gain"
+plugin_description: "A simple audio volume gain plugin"
+author_name: "Joe Doe"
+domain: "example.com"
+github_username: "{{author_name | lower | replace(' ', '.')}}"
+email: "{{github_username}}@{{domain}}"
+plugin_brand: "{{domain}}"
+plugin_name:
+  type: str
+  default: "{{project_name | replace(' ', '')}}"
+  help: The plugin name, which can be used as an identifier in source code
+plugin_cname:
+  type: str
+  when: false
+  default: "{{plugin_name | lower}}"
+  help: A form of the plugin name suitable for filenames
+repo_name: "{{project_name | lower | replace(' ', '')}}"
+plugin_uri: "https://{{domain}}/plugins/{{repo_name}}"
+project_license: "MIT"
+version: "0.1.0"
+year: "2024"
+num_inputs:
+  type: int
+  default: 1
+num_outputs:
+  type: int
+  default: 1
+_exclude:
+  - doc
+  - hooks
+_tasks:
+  - "echo 'Running post-project-generation hook...'"
+  - "echo 'Initializing new Git repository:'"
+  - "git init"
+  #- "git remote add origin git@github.com:{{github_username}}/{{repo_name}}"
+  - "echo 'Adding Git submodule for DPF library:'"
+  - "git submodule add https://github.com/DISTRHO/DPF.git dpf"
+  - "echo 'Checking out submodules:'"
+  - "git submodule update --init --recursive"
+  - "echo 'Making initial Git commit:'"
+  - "git add -A"
+  - "git commit -m 'Initial commit'"
+_message_after_copy: |
+  Your DPF/FAUST audio effect plugin project is now ready!
+  To compile it, change into the '{{repo_name}}' directory and type 'make'.
+  The plugin binaries and bundles will be placed in the 'bin' subdirectory.
+  Have fun!

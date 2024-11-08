@@ -1,10 +1,10 @@
 /*
- * {{ cookiecutter.project_name }} audio effect based on DISTRHO Plugin Framework (DPF)
+ * {{project_name}} audio effect based on DISTRHO Plugin Framework (DPF)
  *
- * SPDX-License-Identifier: {{ cookiecutter.project_license }}
+ * SPDX-License-Identifier: {{project_license}}
  *
- * Copyright (C) {{ cookiecutter.year }} {{ cookiecutter.author_name }} <{{ cookiecutter.email }}>
-{%- if cookiecutter.project_license == 'MIT' %}
+ * Copyright (C) {{year}} {{author_name}} <{{email}}>
+{%- if project_license == 'MIT' %}
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -26,37 +26,37 @@
 {%- endif %}
  */
 
-#include "Plugin{{ cookiecutter.plugin_name }}.hpp"
+#include "Plugin{{plugin_name}}.hpp"
 
 START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
 
-Plugin{{ cookiecutter.plugin_name }}::Plugin{{ cookiecutter.plugin_name }}()
-    : Plugin({{ cookiecutter.plugin_name }}::NumParameters, presetCount, 0)  // # of params, # of programs, 0 states
+Plugin{{plugin_name}}::Plugin{{plugin_name}}()
+    : Plugin({{plugin_name}}::NumParameters, presetCount, 0)  // # of params, # of programs, 0 states
 {
-    dsp = new {{ cookiecutter.plugin_name }};
+    dsp = new {{plugin_name}};
     fSampleRate = getSampleRate();
 
-    for (unsigned p = 0; p < {{ cookiecutter.plugin_name }}::NumParameters; ++p) {
+    for (unsigned p = 0; p < {{plugin_name}}::NumParameters; ++p) {
         Parameter param;
         initParameter(p, param);
         setParameterValue(p, param.ranges.def);
     }
 }
 
-Plugin{{ cookiecutter.plugin_name }}::~Plugin{{ cookiecutter.plugin_name }}() {
+Plugin{{plugin_name}}::~Plugin{{plugin_name}}() {
     delete dsp;
 }
 
 // -----------------------------------------------------------------------
 // Init
 
-void Plugin{{ cookiecutter.plugin_name }}::initParameter(uint32_t index, Parameter& parameter) {
-    if (index >= {{ cookiecutter.plugin_name }}::NumParameters)
+void Plugin{{plugin_name}}::initParameter(uint32_t index, Parameter& parameter) {
+    if (index >= {{plugin_name}}::NumParameters)
         return;
 
-    const {{ cookiecutter.plugin_name }}::ParameterRange* range = dsp->parameter_range(index);
+    const {{plugin_name}}::ParameterRange* range = dsp->parameter_range(index);
     parameter.name = dsp->parameter_label(index);
     parameter.shortName = dsp->parameter_short_label(index);
     parameter.symbol = dsp->parameter_symbol(index);
@@ -80,7 +80,7 @@ void Plugin{{ cookiecutter.plugin_name }}::initParameter(uint32_t index, Paramet
   Set the name of the program @a index.
   This function will be called once, shortly after the plugin is created.
 */
-void Plugin{{ cookiecutter.plugin_name }}::initProgramName(uint32_t index, String& programName) {
+void Plugin{{plugin_name}}::initProgramName(uint32_t index, String& programName) {
     if (index < presetCount) {
         programName = factoryPresets[index].name;
     }
@@ -92,7 +92,7 @@ void Plugin{{ cookiecutter.plugin_name }}::initProgramName(uint32_t index, Strin
 /**
   Optional callback to inform the plugin about a sample rate change.
 */
-void Plugin{{ cookiecutter.plugin_name }}::sampleRateChanged(double newSampleRate) {
+void Plugin{{plugin_name}}::sampleRateChanged(double newSampleRate) {
     fSampleRate = newSampleRate;
     dsp->init(newSampleRate);
 }
@@ -100,18 +100,18 @@ void Plugin{{ cookiecutter.plugin_name }}::sampleRateChanged(double newSampleRat
 /**
   Get the current value of a parameter.
 */
-float Plugin{{ cookiecutter.plugin_name }}::getParameterValue(uint32_t index) const {
+float Plugin{{plugin_name}}::getParameterValue(uint32_t index) const {
     return dsp->get_parameter(index);
 }
 
 /**
   Change a parameter value.
 */
-void Plugin{{ cookiecutter.plugin_name }}::setParameterValue(uint32_t index, float value) {
-    if (index >= {{ cookiecutter.plugin_name }}::NumParameters)
+void Plugin{{plugin_name}}::setParameterValue(uint32_t index, float value) {
+    if (index >= {{plugin_name}}::NumParameters)
         return;
 
-    const {{ cookiecutter.plugin_name }}::ParameterRange* range = dsp->parameter_range(index);
+    const {{plugin_name}}::ParameterRange* range = dsp->parameter_range(index);
     dsp->set_parameter(index, CLAMP(value, range->min, range->max));
 }
 
@@ -120,9 +120,9 @@ void Plugin{{ cookiecutter.plugin_name }}::setParameterValue(uint32_t index, flo
   The host may call this function from any context,
   including realtime processing.
 */
-void Plugin{{ cookiecutter.plugin_name }}::loadProgram(uint32_t index) {
+void Plugin{{plugin_name}}::loadProgram(uint32_t index) {
     if (index < presetCount) {
-        for (int i=0; i < {{ cookiecutter.plugin_name }}::NumParameters; i++) {
+        for (int i=0; i < {{plugin_name}}::NumParameters; i++) {
             setParameterValue(i, factoryPresets[index].params[i]);
         }
     }
@@ -134,21 +134,21 @@ void Plugin{{ cookiecutter.plugin_name }}::loadProgram(uint32_t index) {
 /**
   Plugin is activated.
 */
-void Plugin{{ cookiecutter.plugin_name }}::activate() {
+void Plugin{{plugin_name}}::activate() {
     fSampleRate = getSampleRate();
     dsp->init(fSampleRate);
 }
 
-{% set indent = " " * (cookiecutter.plugin_name | length + 17) %}
-void Plugin{{ cookiecutter.plugin_name }}::run(const float** inputs, float** outputs,
-{{ indent }}uint32_t frames) {
-    dsp->process({% for i in range(cookiecutter.num_inputs | int) %}inputs[{{ i }}], {% endfor %}{% for i in range(cookiecutter.num_outputs | int) %}outputs[{{ i }}], {% endfor %}(unsigned)frames);
+{% set indent = " " * (plugin_name | length + 17) %}
+void Plugin{{plugin_name}}::run(const float** inputs, float** outputs,
+{{ indent}}uint32_t frames) {
+    dsp->process({% for i in range(num_inputs | int) %}inputs[{{ i}}], {% endfor %}{% for i in range(num_outputs | int) %}outputs[{{ i}}], {% endfor %}(unsigned)frames);
 }
 
 // -----------------------------------------------------------------------
 
 Plugin* createPlugin() {
-    return new Plugin{{ cookiecutter.plugin_name }}();
+    return new Plugin{{plugin_name}}();
 }
 
 // -----------------------------------------------------------------------

@@ -7,7 +7,7 @@
 # --------------------------------------------------------------
 # Project name, used for binaries
 
-NAME = {{ cookiecutter.plugin_name | lower }}
+NAME = {{plugin_cname}}
 
 # --------------------------------------------------------------
 # FAUST DSP source
@@ -33,7 +33,7 @@ BUILD_VST3 ?= true
 
 FILES_DSP = \
 	$(FAUST_IDENTIFIER).cpp \
-	Plugin{{ cookiecutter.plugin_name }}.cpp
+	Plugin{{plugin_name}}.cpp
 
 # --------------------------------------------------------------
 # Do some magic

@@ -1,21 +1,21 @@
-# {{ cookiecutter.project_name }}
+# {{project_name}}
 
-{{ cookiecutter.plugin_description }}
+{{plugin_description}}
 
 
 ## Formats
 
 This plugin is available in the following plug-in formats by default:
 
-* [CLAP] (`{{ cookiecutter.domain }}.{{ cookiecutter.plugin_name | lower }}`)
-* [LV2] (`{{ cookiecutter.plugin_uri }}`)
-* [VST3][vst] (`{{ cookiecutter.plugin_name | lower }}.vst3`)
+* [CLAP] (`{{domain}}.{{plugin_name | lower}}`)
+* [LV2] (`{{plugin_uri}}`)
+* [VST3][vst] (`{{plugin_name | lower}}.vst3`)
 
 The following formats are not built by default, but can be enabled when
 compiling (see ["Compiling"](#compiling)):
 
-* [LADSPA] (`{{ cookiecutter.plugin_name | lower }}-ladspa.so`)
-* [VST2][vst] (`{{ cookiecutter.plugin_name | lower }}-vst.so`)
+* [LADSPA] (`{{plugin_name | lower}}-ladspa.so`)
+* [VST2][vst] (`{{plugin_name | lower}}-vst.so`)
 
 The plugin depends on the host to provide a generic UI to control parameters.
 
@@ -26,8 +26,8 @@ Make sure you have installed the required build tools and libraries (see
 section "Prerequisites" below) and then clone this repository (including
 sub-modules) and simply run `make` in the project's root directory:
 
-    $ git clone --recursive https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}.git
-    $ cd {{ cookiecutter.repo_name }}
+    $ git clone --recursive https://github.com/{{github_username}}/{{repo_name}}.git
+    $ cd {{repo_name}}
     $ make
 
 To enable building additional plugin formats, which are not enabled by default
@@ -107,12 +107,12 @@ if the FAUST DSP source files in the `faust` directory are changed.
 
 ## Author
 
-This software was created by *{{ cookiecutter.author_name }}*.
+This software was created by *{{author_name}}*.
 
 
 ## License
 
-This plugin is released under the *{{ cookiecutter.project_license }}}}*. Please see the
+This plugin is released under the *{{project_license}}*. Please see the
 [LICENSE.md](./LICENSE.md) file for details.
 
 
@@ -121,12 +121,13 @@ This plugin is released under the *{{ cookiecutter.project_license }}}}*. Please
 The DSP code is generated from the FAUST sources via the [faustpp]
 pre-processor.
 
-The project is built using the DISTRHO Plugin Framework ([DPF]) and set up
-with the [cookiecutter-dpf-faust] project template.
+The project is built using the DISTRHO Plugin Framework ([DPF]) and was set up
+with the [copier-dpf-faust] project template using [copier].
 
 
 [clap]: https://cleveraudio.org/
-[cookiecutter-dpf-faust]: https://github.com/SpotlightKid/cookiecutter-dpf-faust
+[copier-dpf-faust]: https://github.com/SpotlightKid/copier-dpf-faust
+[copier]: https://copier.readthedocs.io/en/stable/
 [dpf]: https://github.com/DISTRHO/DPF
 [faust]: https://faust.grame.fr/
 [faustpp]: https://github.com/jpcima/faustpp.git
