@@ -25,14 +25,12 @@ num_inputs:
 num_outputs:
   type: int
   default: 1
-_exclude:
-  - doc
-  - hooks
+_subdirectory: template
 _tasks:
   - "echo 'Running post-project-generation hook...'"
   - "echo 'Initializing new Git repository:'"
   - "git init"
-  #- "git remote add origin git@github.com:{{github_username}}/{{repo_name}}"
+  - "git remote add origin git@github.com:{{github_username}}/{{repo_name}}"
   - "echo 'Adding Git submodule for DPF library:'"
   - "git submodule add https://github.com/DISTRHO/DPF.git dpf"
   - "echo 'Checking out submodules:'"
