@@ -1,4 +1,4 @@
-# copier-dpf-faust
+# dpf-faust-project-template
 
 A [copier] project template for DISTRHO Plugin Framework ([DPF]) audio
 effect plugins using [FAUST] for the implementation of the DSP pipeline.
@@ -11,7 +11,7 @@ To create a DPF effect plugin using this template, install copier (see
 the [installation instructions]) and then run:
 
 ```console
-$ copier copy --trust gh:SpotlightKid/copier-dpf-faust <my-project>
+$ copier copy --trust gh:SpotlightKid/dpf-faust-project-template <my-project>
 ```
 
 where `<my-project>` should be the path to a non-existing directory where
@@ -32,7 +32,7 @@ Enter the plugin name and other info at the prompts. (See the
 Here is an example (some output abbreviated for clarity):
 
 ```console
-$ copier copy --trust gh:SpotlightKid/copier-dpf-faust dpffaustgain
+$ copier copy --trust gh:SpotlightKid/dpf-faust-project-template dpffaustgain
 🎤 project_name
    DPF FAUST Gain
 🎤 plugin_description
