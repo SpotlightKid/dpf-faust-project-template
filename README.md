@@ -3,7 +3,7 @@
 A [copier] project template for DISTRHO Plugin Framework ([DPF]) audio effect
 plugins using [FAUST] for the implementation of the DSP pipeline.
 
-[![quik start asciicast](https://asciinema.org/a/uZsmSCT0yjmBwZSwOZYZqCy9r.svg)](https://asciinema.org/a/uZsmSCT0yjmBwZSwOZYZqCy9r)
+[![quik start asciicast](./screencast/quick-start.gif)](https://asciinema.org/a/688640)
 
 ## Quickstart
 

@@ -1,0 +1,38 @@
+pipx install copier
+
+pipx inject copier copier-templates-extensions
+
+copier copy --trust gh:SpotlightKid/dpf-faust-project-template faustcomp
+
+cd faustcomp
+
+git remote -v
+
+ls
+
+ls faust
+
+ls plugins/faustcomp
+
+micro faust/faustcomp.dsp
+
+# _,_ : dm.compressor_demo : _,_;
+
+make
+
+ls plugins/faustcomp
+
+ls bin
+
+make install-user
+
+ls ~/.lv2/faustcomp.lv2
+
+lv2ls | grep faustcomp
+
+lv2info `lv2ls | grep faustcomp` | less
+
+jalv `lv2ls | grep -i faustcomp`
+
+^C
+^D
