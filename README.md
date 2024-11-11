@@ -1,29 +1,32 @@
 # dpf-faust-project-template
 
-A [copier] project template for DISTRHO Plugin Framework ([DPF]) audio
-effect plugins using [FAUST] for the implementation of the DSP pipeline.
+A [copier] project template for DISTRHO Plugin Framework ([DPF]) audio effect
+plugins using [FAUST] for the implementation of the DSP pipeline.
 
 [![quik start asciicast](https://asciinema.org/a/uZsmSCT0yjmBwZSwOZYZqCy9r.svg)](https://asciinema.org/a/uZsmSCT0yjmBwZSwOZYZqCy9r)
 
 ## Quickstart
 
-To create a DPF effect plugin using this template, install copier (see
-the [installation instructions]) and then run:
+To create a DPF effect plugin using this template, install `copier` and the
+`copier-templates-extensions` package (see the [installation instructions]) and
+then run:
 
 ```console
 $ copier copy --trust gh:SpotlightKid/dpf-faust-project-template <my-project>
 ```
 
-where `<my-project>` should be the path to a non-existing directory where
-your new project will be created.
+where `<my-project>` should be the path to a non-existing directory where your
+new project will be created. The name of this directory will also be used as
+the name of Git repository, which will be ininialized in the newly created
+project.
 
-**Note:** The `--trust` option is necessary because the project template
-runs some additional tasks after the project generation and also loads some
-custom Jinja template extensions included in the project template. Both things
-are considered "unsafe", because they can potentially run arbitray commands as
-the user who generates a project from the template. The additional tasks are
-simple shell commands to set up a git repository with a sub module etc. You can
-have a look at the [copier.yml](./copier.yml) file to review these commands
+**Note:** The `--trust` option is necessary because the project template runs
+some additional tasks after the project generation and also loads some custom
+Jinja template extensions included in the project template. Both things are
+considered "unsafe", because they can potentially run arbitray commands as the
+user who generates a project from the template. The additional tasks are simple
+shell commands to set up a git repository with a sub module etc. You can have a
+look at the [copier.yml](./copier.yml) file to review these commands
 beforehand.
 
 Enter the plugin name and other info at the prompts. (See the
@@ -146,8 +149,8 @@ To build the generated project, you need additional development tools. See the
 This copier template is released under MIT license. See the
 [LICENSE.md](./LICENSE.md) file for more information.
 
-When generating a project using this template, you may choose any license for the
-resulting files which is compatible with the license of DPF and the plugin
+When generating a project using this template, you may choose any license for
+the resulting files which is compatible with the license of DPF and the plugin
 formats you want to distribute.
 
 The `faustpp` architecture files in the `faust/arch` directory of generated
@@ -165,7 +168,7 @@ file in the same dierctory.
 [copier]: https://github.com/copier-org/copier
 [copier documentation]: https://copier.readthedocs.io/en/stable
 [dpf]: https://github.com/DISTRHO/DPF
-[installation instructions]: https://copier.readthedocs.io/en/stable/#installation
+[installation instructions]: https://github.com/copier-org/copier-templates-extensions?tab=readme-ov-file#installation
 [faust]: https://faust.grame.fr/
 [faustpp]: https://github.com/jpcima/faustpp
 [@jpcima]: https://github.com/jpcima
