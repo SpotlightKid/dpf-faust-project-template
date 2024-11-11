@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## 0.4.0 (2024-11-11)
+
+* Added GitHub actions workflow to project template.
+* Updated quick start screencast.
+
+
 ## 0.3.0 (2024-11-08)
 
 Converted project template from `cookiecutter` to `copier`.
