@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## 0.4.1 (2024-11-13)
+
+* Don't init git submodules on project creation.
+* Generate CLAP plugin id in reversed domain notation.
+* Fix example command in project readme and small wording fix.
+
+
 ## 0.4.0 (2024-11-11)
 
 * Added GitHub actions workflow to project template.
