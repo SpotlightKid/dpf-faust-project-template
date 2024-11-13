@@ -33,8 +33,6 @@ _tasks:
   - "git config get user.email >/dev/null || git config set --no-global user.email '{{email}}'"
   - "echo 'Adding Git submodule for DPF library:'"
   - "git submodule add https://github.com/DISTRHO/DPF.git dpf"
-  - "echo 'Checking out submodules:'"
-  - "git submodule update --init --recursive"
   - "echo 'Making initial Git commit:'"
   - "git add -A"
   - "git commit -m 'Initial commit'"
