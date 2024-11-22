@@ -96,14 +96,14 @@ variables differ depending on the target OS.*
 
 * [pkgconf]
 
-* The [faustpp] pre-processor and [FAUST] (optional)
+* The [faustdoctor] pre-processor and [FAUST] (optional)
 
 The [CLAP], [LV2], [LADSPA], [VST2][vst] (Xaymar VST2SDK) and [VST3][vst]
 headers are included in the [DPF] framework, which is integrated as a Git
 sub-module. These need not be installed separately to build the software in
 the respective plug-in formats.
 
-`faustpp` and FAUST are only needed to re-generate C++ source and header files
+`faustdoctor` and FAUST are only needed to re-generate C++ source and header files
 if the FAUST DSP source files in the `faust` directory are changed.
 
 
@@ -120,8 +120,8 @@ the [LICENSE.md](./LICENSE.md) file for details.
 
 ## Acknowledgements
 
-The DSP code is generated from the FAUST sources via the [faustpp]
-pre-processor.
+The DSP code is generated from the FAUST sources via the [faustdoctor]
+post-processor.
 
 The project is built using the DISTRHO Plugin Framework ([DPF]) and was created
 from the [dpf-faust-project-template] using [copier].
@@ -132,7 +132,7 @@ from the [dpf-faust-project-template] using [copier].
 [copier]: https://copier.readthedocs.io/en/stable/
 [dpf]: https://github.com/DISTRHO/DPF
 [faust]: https://faust.grame.fr/
-[faustpp]: https://github.com/jpcima/faustpp.git
+[faustdoctor]: https://github.com/SpotlightKid/faustdoctor
 [ladspa]: https://www.ladspa.org/
 [lv2]: https://lv2plug.in/
 [pkgconf]: https://github.com/pkgconf/pkgconf

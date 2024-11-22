@@ -3,7 +3,8 @@
 A [copier] project template for DISTRHO Plugin Framework ([DPF]) audio effect
 plugins using [FAUST] for the implementation of the DSP pipeline.
 
-[![quik start asciicast](./screencast/quick-start.gif)](https://asciinema.org/a/688640)
+[![quik start asciicast](./screencast/quick-start.gif)](https://asciinema.org/a/4MsiYdGOrL6haSwv9n94qr2p6)
+
 
 ## Quickstart
 
@@ -153,7 +154,7 @@ When generating a project using this template, you may choose any license for
 the resulting files which is compatible with the license of DPF and the plugin
 formats you want to distribute.
 
-The `faustpp` architecture files in the `faust/arch` directory of generated
+The `faustdoctor` architecture files in the `faust/arch` directory of generated
 projects are distributed under the Boost Software License 1.0 and come with a
 special license exception, which can be found in the `LICENSE-EXCEPTION.md`
 file in the same dierctory.
@@ -162,7 +163,7 @@ file in the same dierctory.
 ## Authors
 
 * Christopher Arndt ([@SpotlightKid])
-* Jean Pierre Cimalando ([@jpcima]) - [faustpp] architecture files
+* Jean Pierre Cimalando ([@jpcima]) - [faustdoctor] architecture files
 
 
 [copier]: https://github.com/copier-org/copier
@@ -170,6 +171,6 @@ file in the same dierctory.
 [dpf]: https://github.com/DISTRHO/DPF
 [installation instructions]: https://github.com/copier-org/copier-templates-extensions?tab=readme-ov-file#installation
 [faust]: https://faust.grame.fr/
-[faustpp]: https://github.com/jpcima/faustpp
+[faustdoctor]: https://github.com/SpotlightKid/faustdoctor
 [@jpcima]: https://github.com/jpcima
 [@spotlightkid]: https://github.com/SpotlightKid

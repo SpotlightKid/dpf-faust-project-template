@@ -24,10 +24,10 @@ PERFORMANCE OF THIS SOFTWARE.
 DPF is released under the ISC license. Copyright 2012-2022 Filipe Coelho.
 
 
-## faustpp
+## faustdoctor
 
-faustpp is released under the Boost Software License 1.0. Copyright 2022 Jean
-Pierre Cimalando.
+faustdoctor is released under the Boost Software License 1.0. Copyright 2022
+Jean Pierre Cimalando, 2024 Christopher Arndt,
 
 
 ## For the CLAP format
