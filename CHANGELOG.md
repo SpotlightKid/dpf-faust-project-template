@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## 0.6.0 (2024-11-26)
+
+* Added support for param groups and descriptions.
+* Added param tooltip to example faust code.
+* Minor tweaks to plugin header file template.
+* Update faustdoctor architecture templates again.
+
+
+## 0.5.0 (2024-11-22)
+
+* Adapted template to 'faustpp' -> 'faustdoctor' rename.
+* Updated faustdoctor architecture templates.
+
+
 ## 0.4.1 (2024-11-13)
 
 * Don't init git submodules on project creation.
