@@ -1,4 +1,4 @@
-{% block HeaderDescription -%}
+{% block HeaderDescription %}
 //------------------------------------------------------------------------------
 // This file was generated using the Faust compiler (https://faust.grame.fr),
 // and the Faust post-processor (https://github.com/SpotlightKid/faustdoctor).
@@ -12,14 +12,17 @@
 // FAUST version: {{faustversion}}
 // FAUST compilation options: {{meta.compile_options}}
 //------------------------------------------------------------------------------
-{%- endblock %}
+{% endblock %}
 
-{% block HeaderPrologue -%}
+{% block HeaderPrologue %}
+{% if fdrversioninfo is undefined or fdrversioninfo < (0, 2, 0) %}
+{{fail("This template is not compatible with faustdoctor version < 0.2.0.")}}
+{% endif %}
 {% if not (Identifier is defined and
            Identifier == cid(Identifier)) %}
 {{fail("`Identifier` is undefined or invalid.")}}
 {% endif %}
-{%- endblock %}
+{% endblock %}
 
 #pragma once
 #ifndef {{Identifier}}_Faust_pp_Gen_HPP_
@@ -37,8 +40,8 @@ public:
     void clear() noexcept;
 
     void process(
-        {% for i in range(inputs) %}const float *in{{i}}, {% endfor %}
-        {% for i in range(outputs) %}float *out{{i}}, {% endfor %}
+        {%+ for i in range(inputs) %}const float *in{{i}}, {% endfor +%}
+        {%+ for i in range(outputs) %}float *out{{i}}, {% endfor +%}
         unsigned count) noexcept;
 
     enum { NumInputs = {{inputs}} };
@@ -48,7 +51,8 @@ public:
     enum { NumParameters = {{active|length + passive|length}} };
 
     enum Parameter {
-        {% for w in active + passive %}p_{{w.meta.symbol}},
+        {% for w in active + passive %}
+        p_{{w.symbol}},
         {% endfor %}
     };
 
@@ -69,6 +73,7 @@ public:
     static const char *parameter_group_symbol(unsigned group_id) noexcept;
     static const char *parameter_label(unsigned index) noexcept;
     static const char *parameter_short_label(unsigned index) noexcept;
+    static const char *parameter_description(unsigned index) noexcept;
     static const char *parameter_style(unsigned index) noexcept;
     static const char *parameter_symbol(unsigned index) noexcept;
     static const char *parameter_unit(unsigned index) noexcept;
@@ -84,12 +89,12 @@ public:
     float get_parameter(unsigned index) const noexcept;
     void set_parameter(unsigned index, float value) noexcept;
 
-    {%- for w in active + passive %}
-    float get_{{w.meta.symbol}}() const noexcept;
-    {%- endfor %}
-    {%- for w in active %}
-    void set_{{w.meta.symbol}}(float value) noexcept;
-    {%- endfor %}
+    {% for w in active + passive %}
+    float get_{{w.symbol}}() const noexcept;
+    {% endfor %}
+    {% for w in active %}
+    void set_{{w.symbol}}(float value) noexcept;
+    {% endfor %}
 
 public:
     class BasicDsp;
@@ -97,11 +102,11 @@ public:
 private:
     std::unique_ptr<BasicDsp> fDsp;
 
-{% block ClassExtraDecls -%}
-{%- endblock %}
+{% block ClassExtraDecls %}
+{% endblock %}
 };
 
-{% block HeaderEpilogue -%}
-{%- endblock %}
+{% block HeaderEpilogue %}
+{% endblock %}
 
 #endif // {{Identifier}}_Faust_pp_Gen_HPP_
