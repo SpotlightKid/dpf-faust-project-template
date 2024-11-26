@@ -132,14 +132,14 @@ struct Preset {
 };
 
 const Preset factoryPresets[] = {
+    //{
+    //    "Presetname",  // preset name
+    //    {0.0, ...}     // array of {{plugin_name}}::NumParameters float param values
+    //},
     {
         "Default",
         {-6.0f,}
     }
-    //,{
-    //    "Another preset",  // preset name
-    //    {-14.0f, ...}      // array of {{plugin_name}}::NumParameters float param values
-    //}
 };
 
 const uint presetCount = sizeof(factoryPresets) / sizeof(Preset);
